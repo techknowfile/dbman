@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 {% csrf_token %}
+<h2 class="card-title">Search Police Reports</h2>
 <div class="form-group">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="form-group row">
-            <div class="col-md-4">
-                <input type="text" id="search-reportNum" class='search-field form-control'name="reportNum" placeholder="Report Number"/>
+            <div class="w-20">
+                <label for="reportNum" class="control-label">Report Number</label>
+                <input type="text" id="search-reportNum" class='search-field form-control' name="reportNum" placeholder="Report Number"/>
             </div>
-            <div class="col-md-4">
-                <select class="form-control" id="search-crime"
-                    name="crime">
-                    <option></option>
+            <div class="w-20">
+                <label for="crime" class="control-label">Crime</label>
+                <select class="form-control" id="search-crime" name="crime">
+                    <option value="" selected></option>
 
                 </select>
             </div>
@@ -18,7 +20,7 @@
     </div>
 </div>
 
-<div id="search-results">
+<div id="search-results" class="col-md-10 mx-auto">
 
 </div>
 {% endblock %}
