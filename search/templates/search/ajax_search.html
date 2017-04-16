@@ -1,0 +1,16 @@
+{% if reports %}
+{% for report in reports %}
+<div class="card">
+    <div class="card-block">
+        <h4 class=card-title>
+            {{ report.reportnum }}
+        </h4>
+        <p class="card-text">
+            {{ report.cdescription }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>No reports matched your query.</p> 
+{% endif %}

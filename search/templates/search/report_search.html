@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% csrf_token %}
+<div class="form-group">
+    <div class="col-md-12">
+        <div class="form-group row">
+            <div class="col-md-4">
+                <input type="text" id="search-reportNum" class='search-field form-control'name="reportNum" placeholder="Report Number"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="search-results">
+
+</div>
+{% endblock %}
+
