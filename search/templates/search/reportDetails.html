@@ -4,6 +4,26 @@
 {% endblock %}
 {% block content %}
 {% if report %}
-<h1>Report #{{report.reportnum}}</h1>
+<h1>Report #{{report.reportnum}}</h1></br>
+    <!--Report Info-->
+    <h2>Location of crime: {{report.caddress}}</h2>
+    <h3>Description:</h3><p>{{report.cdescription}}</p>
+    </br>
+    <!--Investigation Info-->
+    <h2>Investigation #{{investigation.inumber}}</h2>
+    </br>
+    <!--Suspect Info-->
+    <h2>Suspect: {{suspect.name}}</h2>
+    <h3>Suspect is {{suspectStatus.soname.soname}} </h3>
+
+    <!--Detective Info-->
+    <h2>Detective Assigned to the case: {{detective.name}}</h2>
+    </br>
+
+    <!--Officer Info-->
+    <h2>Officer who worked the case: {{officerName}}</h2>
+    <h3>Badge #{{officer.badgenum}}</h3>
+    <h3>Rank: {{officer.rank}}</h3>
+    </br>
 {% endif %}
 {% endblock %}

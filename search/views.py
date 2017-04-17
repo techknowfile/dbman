@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponse
-from .models import ReportReportsonFiles, Crime
+from .models import ReportReportsonFiles, Crime, InvestigationRelatesto, Assignedto, Person, Workson, SuspectIson, StatusHasstatusHasoption 
 
 # csrf token for valid forms
 from django.template.context_processors import csrf
@@ -37,6 +37,21 @@ def getCrimeList(request):
 
 def reportDetails(request, reportNum):
     report = ReportReportsonFiles.objects.raw('SELECT * FROM report_reportson_files as reports WHERE reportnum = %s', [reportNum])[0]
+    investigation = InvestigationRelatesto.objects.raw('SELECT * FROM investigation_relatesto WHERE reportnum = %s', [reportNum])[0]
+    detectiveObj = Assignedto.objects.raw('SELECT * FROM assignedto WHERE iNumber = %s', [investigation.inumber])[0]
+    detectivePerson = detectiveObj.ssn.ssn
+    officerObj = Workson.objects.raw('SELECT * FROM workson WHERE reportnum = %s', [reportNum])[0].badgenum
+    officerPerson = officerObj.ssn
+    suspectObj = SuspectIson.objects.raw('SELECT * FROM suspect_ison WHERE iNumber = %s', [investigation.inumber])[0]
+    suspectPerson = suspectObj.ssn
+    suspectStatus = StatusHasstatusHasoption.objects.raw('SELECT * FROM status_hasstatus_hasoption WHERE ssn = %s', [suspectPerson.ssn])[0]
+    
     context = {}
+    context['investigation'] = investigation
     context['report'] = report
+    context['detective'] = detectivePerson
+    context['suspect'] = suspectPerson
+    context['officer'] = officerObj
+    context['officerName'] = officerPerson.name
+    context['suspectStatus'] = suspectStatus
     return render (request, 'search/reportDetails.html', context)

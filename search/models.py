@@ -12,7 +12,7 @@ from django.db import models
 
 class Assignedto(models.Model):
     ssn = models.ForeignKey('Detective', models.DO_NOTHING, db_column='ssn')
-    inumber = models.ForeignKey('InvestigationRelatesto', models.DO_NOTHING, db_column='iNumber')  # Field name made lowercase.
+    inumber = models.ForeignKey('InvestigationRelatesto', models.DO_NOTHING, db_column='iNumber', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -139,7 +139,7 @@ class SuspectIson(models.Model):
     ssn = models.ForeignKey(Person, models.DO_NOTHING, db_column='ssn')
     inumber = models.ForeignKey(InvestigationRelatesto, models.DO_NOTHING,
                                 db_column='iNumber',
-                                related_name='suspectison_inumber')  # Field name made lowercase.
+                                related_name='suspectison_inumber', primary_key=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
