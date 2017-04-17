@@ -84,24 +84,16 @@ def search_reports(request):
 #https://docs.djangoproject.com/en/1.11/topics/db/sql/
 #http://blog.appliedinformaticsinc.com/how-to-perform-raw-sql-queries-in-django/
 def getCrimeList(request):
-<<<<<<< HEAD
-    crimes = Crime.objects.all().values_list('cname', flat=True);
-    return render(request, 'search/crimeOptions.html', {'crimes': crimes})
+    # crimes = Crime.objects.all().values_list('cname', flat=True);
+    # return render(request, 'search/crimeOptions.html', {'crimes': crimes})
+	values = [];
+	crimes = Crime.objects.raw('SELECT * FROM crime');
+	for c in crimes:
+		values.append(c.cname);
+	return render(request, 'search/crimeOptions.html', {'crimes': values})
 
 def reportDetails(request, reportNum):
     report = ReportReportsonFiles.objects.raw('SELECT * FROM report_reportson_files as reports WHERE reportnum = %s', [reportNum])[0]
     context = {}
     context['report'] = report
     return render (request, 'search/reportDetails.html', context)
-=======
-	values = [];
-	crimes = Crime.objects.raw('SELECT * FROM crime');
-	for c in crimes:
-		values.append(c.cname);
-	return render(request, 'search/crimeOptions.html', {'crimes': values})
-	
-	
-	
-	
-	
->>>>>>> origin/personal
