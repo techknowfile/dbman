@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^search/', include('search.urls')),
     url(r'^$', views.search),
-
+    url(r'^r/(?P<reportNum>[0-9]+)$', views.reportDetails),
 ]

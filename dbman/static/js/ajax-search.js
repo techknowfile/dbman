@@ -11,7 +11,7 @@ $(function(){
         },
         dataType: 'html'
     });
-    $('.search-field').keydown(getSearchResults);
+    $('.search-field').keyup(getSearchResults);
     $('#search-crime').change(getSearchResults);
 });
 
@@ -20,7 +20,13 @@ function searchSuccess(data, textStatus, jqXHR){
 }
 function getSearchResults(event) {
     console.log(event.target.name);
-        if (event.keyCode == 13 || event.target.name == "crime") {
+        // if (event.keyCode == 13 || event.target.name == "crime") {
+            
+        // }
+    if ($('#search-reportNum').val() == '' && $('#search-crime').val() == ''){
+        $('#search-results').html("<p>Fill in one or more of the above fields.</p>")
+    } else {
+        
             $.ajax({
                 type: "POST",
                 url: "/search/",
@@ -33,5 +39,5 @@ function getSearchResults(event) {
                 dataType: 'html'
 
             });
-        }
+    }
     }

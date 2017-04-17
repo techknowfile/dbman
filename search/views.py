@@ -34,3 +34,9 @@ def search_reports(request):
 def getCrimeList(request):
     crimes = Crime.objects.all().values_list('cname', flat=True);
     return render(request, 'search/crimeOptions.html', {'crimes': crimes})
+
+def reportDetails(request, reportNum):
+    report = ReportReportsonFiles.objects.raw('SELECT * FROM report_reportson_files as reports WHERE reportnum = %s', [reportNum])[0]
+    context = {}
+    context['report'] = report
+    return render (request, 'search/reportDetails.html', context)

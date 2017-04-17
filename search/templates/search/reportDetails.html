@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block breadcrumbs %}        
+{{ block.super }} / Report #{{report.reportnum}} 
+{% endblock %}
+{% block content %}
+{% if report %}
+<h1>Report #{{report.reportnum}}</h1>
+{% endif %}
+{% endblock %}
