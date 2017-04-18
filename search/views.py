@@ -6,6 +6,8 @@ from .models import ReportReportsonFiles, Crime, InvestigationRelatesto, Assigne
 from django.template.context_processors import csrf
 
 # Create your views here.
+def login(request):
+    pass
 
 def search(request):
     # reports = ReportReportsonFiles.objects.all()     
