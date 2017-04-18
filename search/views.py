@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponse
-from .models import ReportReportsonFiles, Crime, InvestigationRelatesto, Assignedto, Person, Workson, SuspectIson, StatusHasstatusHasoption 
+from .models import ReportReportsonFiles, Crime, InvestigationRelatesto, Assignedto, Person, Workson, SuspectIson, StatusHasstatusHasoption, Clerk
 
 # csrf token for valid forms
 from django.template.context_processors import csrf
@@ -55,3 +55,13 @@ def reportDetails(request, reportNum):
     context['officerName'] = officerPerson.name
     context['suspectStatus'] = suspectStatus
     return render (request, 'search/reportDetails.html', context)
+
+def createReport(request, username, password):
+    user = User.objects.raw('SELECT ssn FROM user WHERE username = %s AND password = %s', [username, password])[0]
+    print("USER.ssn:", user.ssn)
+    clerkObj = Clerk.objects.raw('SELECT * FROM clerk WHERE ssn = %s', user.ssn)[0]
+    if clerkObj:
+        clerk = clerkObj.ssn 
+        return render(request, 'search/createReport.html', {'clerk': clerk})
+    else:
+        print("NOOOOPEEE")
