@@ -7,7 +7,7 @@ from django.template.context_processors import csrf
 
 # Create your views here.
 def login(request):
-    pass
+    return render(request, 'search/login.html')
 
 def search(request):
     # reports = ReportReportsonFiles.objects.all()     
