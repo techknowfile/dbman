@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.search),
     url(r'^r/(?P<reportNum>[0-9]+)$', views.reportDetails),
     url(r'^create/$', views.login),
+    url(r'^createReport/$', views.createReport),
 ]

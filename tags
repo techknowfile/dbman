@@ -448,6 +448,7 @@ complete	dbman/static/js/bootstrap.js	/^      var complete = function complete()
 complete	dbman/static/js/bootstrap.js	/^      var complete = function complete() {$/;"	m	class:var
 constraints	dbman/static/js/bootstrap.js	/^    offset: 'string',$/;"	p	class:Tooltip.DefaultType
 container	dbman/static/js/bootstrap.js	/^    constraints: 'array',$/;"	p	class:Tooltip.DefaultType
+createReport	search/views.py	/^def createReport(request, username, password):$/;"	f
 cycle	dbman/static/js/bootstrap.js	/^    Carousel.prototype.cycle = function cycle(event) {$/;"	m	class:Carousel
 date	search/models.py	/^    date = models.DateField()$/;"	v	class:StatusHasstatusHasoption
 db_column	search/models.py	/^                                db_column='iNumber',$/;"	v	class:StatusHasstatusHasoption
@@ -505,7 +506,7 @@ i	dbman/static/js/bootstrap.min.js	/^if("undefined"==typeof jQuery)throw new Err
 initial	search/migrations/0001_initial.py	/^    initial = True$/;"	v	class:Migration
 interval	dbman/static/js/bootstrap.js	/^  var Default = {$/;"	p	class:Carousel.Default
 interval	dbman/static/js/bootstrap.js	/^  var DefaultType = {$/;"	p	class:Carousel.DefaultType
-inumber	search/models.py	/^    inumber = models.ForeignKey('InvestigationRelatesto', models.DO_NOTHING, db_column='iNumber')  # Field name made lowercase.$/;"	v	class:Assignedto
+inumber	search/models.py	/^    inumber = models.ForeignKey('InvestigationRelatesto', models.DO_NOTHING, db_column='iNumber', primary_key=True)  # Field name made lowercase.$/;"	v	class:Assignedto
 inumber	search/models.py	/^    inumber = models.ForeignKey('SuspectIson', models.DO_NOTHING,$/;"	v	class:StatusHasstatusHasoption
 inumber	search/models.py	/^    inumber = models.ForeignKey(InvestigationRelatesto, models.DO_NOTHING,$/;"	v	class:SuspectIson
 inumber	search/models.py	/^    inumber = models.IntegerField(db_column='iNumber', primary_key=True)  # Field name made lowercase.$/;"	v	class:InvestigationRelatesto
@@ -517,6 +518,7 @@ keyboard	dbman/static/js/bootstrap.js	/^    backdrop: '(boolean|string)',$/;"	p	
 keyboard	dbman/static/js/bootstrap.js	/^    backdrop: true,$/;"	p	class:Modal.Default
 keyboard	dbman/static/js/bootstrap.js	/^    interval: '(number|boolean)',$/;"	p	class:Carousel.DefaultType
 keyboard	dbman/static/js/bootstrap.js	/^    interval: 5000,$/;"	p	class:Carousel.Default
+login	search/views.py	/^def login(request):$/;"	f
 managed	search/models.py	/^        managed = False$/;"	v	class:Assignedto.Meta
 managed	search/models.py	/^        managed = False$/;"	v	class:Clerk.Meta
 managed	search/models.py	/^        managed = False$/;"	v	class:Crime.Meta
@@ -584,7 +586,7 @@ refresh	dbman/static/js/bootstrap.js	/^    ScrollSpy.prototype.refresh = functio
 relatedTarget	dbman/static/js/bootstrap.js	/^        var relatedTarget = {$/;"	p	class:var.relatedTarget
 relatedTarget	dbman/static/js/bootstrap.js	/^      var relatedTarget = {$/;"	p	class:var.relatedTarget
 related_name	search/models.py	/^                                related_name='statushasstatusoption_inumber')  # Field name made lowercase.$/;"	v	class:StatusHasstatusHasoption
-related_name	search/models.py	/^                                related_name='suspectison_inumber')  # Field name made lowercase.$/;"	v	class:SuspectIson
+reportDetails	search/views.py	/^def reportDetails(request, reportNum):$/;"	f
 reportnum	search/models.py	/^    reportnum = models.ForeignKey('ReportReportsonFiles', models.DO_NOTHING, db_column='reportNum', unique=True)  # Field name made lowercase.$/;"	v	class:InvestigationRelatesto
 reportnum	search/models.py	/^    reportnum = models.ForeignKey(ReportReportsonFiles, models.DO_NOTHING, db_column='reportNum', primary_key=True)  # Field name made lowercase.$/;"	v	class:Workson
 reportnum	search/models.py	/^    reportnum = models.IntegerField(db_column='reportNum', primary_key=True)  # Field name made lowercase.$/;"	v	class:ReportReportsonFiles

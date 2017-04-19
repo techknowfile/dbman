@@ -35,6 +35,8 @@ class Crime(models.Model):
         managed = False
         db_table = 'crime'
 
+    def __str__(self):
+        return self.cname
 
 class Detective(models.Model):
     ssn = models.ForeignKey('Person', models.DO_NOTHING, db_column='ssn', primary_key=True)

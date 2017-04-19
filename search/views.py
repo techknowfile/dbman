@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.http import HttpResponse
 from .models import ReportReportsonFiles, Crime, InvestigationRelatesto, Assignedto, Person, Workson, SuspectIson, StatusHasstatusHasoption, Clerk
+from .forms import reportForm
 
 # csrf token for valid forms
 from django.template.context_processors import csrf
@@ -8,6 +9,18 @@ from django.template.context_processors import csrf
 # Create your views here.
 def login(request):
     return render(request, 'search/login.html')
+
+def createReport(request):
+    if request.method == 'POST':
+        form = reportForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            print(data)
+            
+            redirect('/')
+    else:
+        form = reportForm()
+        return render(request, 'search/new_report_form.html', {'form':form})
 
 def search(request):
     # reports = ReportReportsonFiles.objects.all()     
@@ -115,12 +128,12 @@ def reportDetails(request, reportNum):
     context['suspectStatus'] = suspectStatus
     return render (request, 'search/reportDetails.html', context)
 
-def createReport(request, username, password):
-    user = User.objects.raw('SELECT ssn FROM user WHERE username = %s AND password = %s', [username, password])[0]
-    print("USER.ssn:", user.ssn)
-    clerkObj = Clerk.objects.raw('SELECT * FROM clerk WHERE ssn = %s', user.ssn)[0]
-    if clerkObj:
-        clerk = clerkObj.ssn 
-        return render(request, 'search/createReport.html', {'clerk': clerk})
-    else:
-        print("NOOOOPEEE")
+# def createReport(request, username, password):
+#     user = User.objects.raw('SELECT ssn FROM user WHERE username = %s AND password = %s', [username, password])[0]
+#     print("USER.ssn:", user.ssn)
+#     clerkObj = Clerk.objects.raw('SELECT * FROM clerk WHERE ssn = %s', user.ssn)[0]
+#     if clerkObj:
+#         clerk = clerkObj.ssn 
+#         return render(request, 'search/createReport.html', {'clerk': clerk})
+#     else:
+#         print("NOOOOPEEE")
